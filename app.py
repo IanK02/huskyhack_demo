@@ -10,90 +10,28 @@ from google import genai
 st.set_page_config(page_title="Financial AI Advisor", layout="centered")
 
 # -------------------------------
-# Sample CSV generation
-# -------------------------------
-
-import pandas as pd
-import io
-import numpy as np
-from datetime import datetime, timedelta
-import streamlit as st
-
-# -------------------------------
-# Function to generate one rich sample CSV per person
-# -------------------------------
-def generate_person_csv(name, age):
-    np.random.seed(hash(name) % 2**32)  # reproducibility per person
-
-    # Personal info
-    personal_info = pd.DataFrame({
-        "Field": ["Name", "Age", "Monthly_Income", "Monthly_Expenses", "Primary_Bank", "Credit_Cards", "Memberships"],
-        "Value": [name, age, np.random.randint(4000,10000), np.random.randint(2000,8000),
-                  np.random.choice(["Chase", "Bank of America", "Wells Fargo", "Citi"]),
-                  ", ".join(np.random.choice(["Chase Sapphire", "Amex Blue", "Discover", "CapitalOne Venture"], size=2, replace=False)),
-                  ", ".join(np.random.choice(["Gym", "Airline Club", "Netflix", "Spotify", "Amazon Prime"], size=3, replace=False))
-                 ]
-    })
-
-    # Bank transactions (50+ entries)
-    start_date = datetime(2025,1,1)
-    transactions = pd.DataFrame({
-        "Date": [start_date + timedelta(days=i) for i in range(50)],
-        "Description": np.random.choice(["Grocery", "Restaurant", "Utilities", "Online Shopping", "Gas", "Subscription", "Rent", "Travel", "Coffee"], size=50),
-        "Amount": np.round(np.random.uniform(5,1500, size=50),2),
-        "Category": np.random.choice(["Food", "Bills", "Shopping", "Transport", "Housing", "Entertainment", "Travel"], size=50)
-    })
-
-    # Investment portfolio (10+ assets)
-    investments = pd.DataFrame({
-        "Investment_Type": np.random.choice(["Stock", "ETF", "Bond", "Crypto"], size=10),
-        "Ticker": [f"TICK{i}" for i in range(10)],
-        "Shares": np.round(np.random.uniform(1,100, size=10),2),
-        "Value_USD": np.round(np.random.uniform(100,5000, size=10),2),
-        "Annual_Return": np.round(np.random.uniform(2,15, size=10),2)
-    })
-
-    # Benefits / rewards (10+ entries)
-    benefits = pd.DataFrame({
-        "Benefit": np.random.choice(["Airline Miles", "Cashback", "Gym Discount", "Streaming Service", "Hotel Points", "Fuel Discount", "Retail Coupons"], size=10),
-        "Provider": np.random.choice(["Chase", "Amex", "Bank of America", "Netflix", "Marriott", "Shell", "Amazon"], size=10),
-        "Estimated_Savings_USD": np.round(np.random.uniform(10,500, size=10),2),
-        "Frequency": np.random.choice(["Monthly", "Yearly"], size=10)
-    })
-
-    # Combine into a single CSV-like string
-    csv_buffer = io.StringIO()
-    csv_buffer.write("# Personal Info\n")
-    personal_info.to_csv(csv_buffer, index=False)
-    csv_buffer.write("\n# Bank Transactions\n")
-    transactions.to_csv(csv_buffer, index=False)
-    csv_buffer.write("\n# Investment Portfolio\n")
-    investments.to_csv(csv_buffer, index=False)
-    csv_buffer.write("\n# Benefits / Rewards\n")
-    benefits.to_csv(csv_buffer, index=False)
-
-    return csv_buffer.getvalue()
-
-# -------------------------------
-# Generate 3 sample CSVs
-# -------------------------------
-sample_csvs = {
-    "Alice Johnson": generate_person_csv("Alice Johnson", 30),
-    "Bob Smith": generate_person_csv("Bob Smith", 42),
-    "Carol Lee": generate_person_csv("Carol Lee", 28)
-}
-
-# -------------------------------
-# Streamlit UI: download buttons
+# Streamlit UI: download buttons for existing CSVs
 # -------------------------------
 st.header("📥 Download Sample Financial Profiles")
-for person, csv_data in sample_csvs.items():
-    st.download_button(
-        label=f"Download sample CSV for {person}",
-        data=csv_data.encode("utf-8"),
-        file_name=f"{person.replace(' ','_').lower()}_profile.csv",
-        mime="text/csv"
-    )
+
+# Map of people to file paths (these CSV files should already exist in your project folder)
+sample_files = {
+    "Alice Johnson": "alice_financial_profile.csv",
+    "Bob Smith": "bob_financial_profile.csv",
+    "Carol Lee": "carol_financial_profile.csv"
+}
+
+for person, file_path in sample_files.items():
+    try:
+        with open(file_path, "rb") as f:
+            st.download_button(
+                label=f"Download sample CSV for {person}",
+                data=f,
+                file_name=file_path.split("/")[-1],
+                mime="text/csv"
+            )
+    except FileNotFoundError:
+        st.warning(f"CSV file for {person} not found at {file_path}")
 # -------------------------------
 # Gemini client setup
 # -------------------------------
