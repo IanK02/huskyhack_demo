@@ -11,7 +11,7 @@ st.set_page_config(page_title="Financial AI Advisor", layout="centered")
 # -------------------------------
 # Main app title
 # -------------------------------
-st.title("🎵 SoundAdvice Recommendation Model")  # main title at the top
+st.title(" SoundAdvice Recommendation Model", width="stretch")  # main title at the top
 st.markdown("---")  # optional horizontal line for separatio
 
 # -------------------------------
