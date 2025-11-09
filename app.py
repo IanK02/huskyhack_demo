@@ -78,51 +78,35 @@ uploaded_file = st.file_uploader("Upload financial profile CSV", type=["csv"], l
 
 if uploaded_file is not None:
     try:
-        csv_bytes = uploaded_file.read()
-        csv_text = csv_bytes.decode("utf-8")
-        df = pd.read_csv(io.StringIO(csv_text))
+        csv_text = uploaded_file.read().decode("utf-8")
+
+        # Split by sections
+        sections = csv_text.split("\n# ")
+        df_personal, df_transactions, df_investments, df_benefits = None, None, None, None
+
+        for section in sections:
+            section = section.strip()
+            if section.startswith("Personal Info"):
+                df_personal = pd.read_csv(io.StringIO(section.replace("Personal Info\n", "")))
+            elif section.startswith("Bank Transactions"):
+                df_transactions = pd.read_csv(io.StringIO(section.replace("Bank Transactions\n", "")))
+            elif section.startswith("Investment Portfolio"):
+                df_investments = pd.read_csv(io.StringIO(section.replace("Investment Portfolio\n", "")))
+            elif section.startswith("Benefits / Rewards"):
+                df_benefits = pd.read_csv(io.StringIO(section.replace("Benefits / Rewards\n", "")))
 
         st.success(f"✅ File '{uploaded_file.name}' uploaded successfully.")
+        st.markdown("### Personal Info")
+        st.dataframe(df_personal)
+        st.markdown("### Bank Transactions")
+        st.dataframe(df_transactions.head(10))  # preview only first 10
+        st.markdown("### Investment Portfolio")
+        st.dataframe(df_investments)
+        st.markdown("### Benefits / Rewards")
+        st.dataframe(df_benefits)
 
-        # Dummy button for demo purposes
-        if st.button("Send CSV to app"):
-            st.info("CSV sent! (Demo button, no actual action)")
-
-        with st.spinner("🤖 Generating personalized recommendations..."):
-            recommendations_text = get_gemini_recommendations(csv_text)
-
-        if recommendations_text.startswith("❌"):
-            st.error(recommendations_text)
-        else:
-            st.markdown("## 💡 Personalized Recommendations")
-
-            # Split Gemini text into recommendations
-            recs = []
-            current_title = None
-            current_desc = []
-
-            for line in recommendations_text.split("\n"):
-                line = line.strip()
-                if not line:
-                    continue
-                if line.startswith("**") and line.endswith("**"):
-                    if current_title:
-                        recs.append((current_title, " ".join(current_desc)))
-                    current_title = line.strip("*")
-                    current_desc = []
-                else:
-                    current_desc.append(line)
-            if current_title:
-                recs.append((current_title, " ".join(current_desc)))
-
-            # Display recommendations
-            for i, (title, desc) in enumerate(recs[:10]):
-                st.markdown(f"""
-                    <div class="recommendation-box">
-                        <div class="recommendation-title">{title}</div>
-                        <div class="recommendation-desc">{desc}</div>
-                    </div>
-                """, unsafe_allow_html=True)
-
+        # Here you can still send the entire CSV text to Gemini for recommendations
+        # ...
+        
     except Exception as e:
         st.error(f"❌ Error reading CSV: {e}")
