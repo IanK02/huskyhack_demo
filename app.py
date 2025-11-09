@@ -16,7 +16,7 @@ st.set_page_config(page_title="Financial AI Advisor", layout="centered")
 st.header("📥 Download Sample Financial Profiles")
 
 # Map of people to file paths (these CSV files should already exist in your project folder)
-os.chdir('/root/Python_Projects/huskyhack/ai_demo')
+
 sample_files = {
     "Alice Johnson": "alice_financial_profile.csv",
     "Bob Smith": "bob_financial_profile.csv",
