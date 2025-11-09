@@ -13,72 +13,85 @@ st.set_page_config(page_title="Financial AI Advisor", layout="centered")
 # Sample CSV generation
 # -------------------------------
 
-def generate_sample_csvs():
-    sample_csvs = {}
-
-    # Sample 1: Basic financial profile
-    df1 = pd.DataFrame({
-        "Name": ["Alice"],
-        "Age": [30],
-        "Monthly_Income": [5000],
-        "Monthly_Expenses": [3200],
-        "Credit_Card_Reward": ["2% cashback"],
-        "Bank_Accounts": ["Bank of America, Chase"],
-        "Investments": ["Vanguard ETF, Robinhood Stocks"],
-        "Membership_Benefits": ["Gym membership discount, Airline miles"]
-    })
-    csv_buffer1 = io.StringIO()
-    df1.to_csv(csv_buffer1, index=False)
-    sample_csvs["Basic Financial Profile"] = csv_buffer1.getvalue()
-
-    # Sample 2: More transactions
-    df2 = pd.DataFrame({
-        "Date": pd.date_range(start="2025-01-01", periods=10, freq='D'),
-        "Description": ["Grocery", "Restaurant", "Utilities", "Online Shopping", "Coffee", "Gas", "Subscription", "Rent", "Gym", "Travel"],
-        "Amount": [120, 45, 150, 200, 5, 60, 15, 1200, 40, 500],
-        "Category": ["Food","Food","Bills","Shopping","Food","Transport","Subscription","Housing","Health","Travel"]
-    })
-    csv_buffer2 = io.StringIO()
-    df2.to_csv(csv_buffer2, index=False)
-    sample_csvs["Recent Transactions"] = csv_buffer2.getvalue()
-
-    # Sample 3: Investment portfolio
-    df3 = pd.DataFrame({
-        "Investment_Type": ["Stocks", "ETF", "Bonds", "Crypto"],
-        "Ticker": ["AAPL", "VOO", "US10Y", "BTC"],
-        "Shares": [10, 20, 5, 0.1],
-        "Value_USD": [1500, 6000, 500, 3000],
-        "Annual_Return": ["8%", "7%", "3%", "12%"]
-    })
-    csv_buffer3 = io.StringIO()
-    df3.to_csv(csv_buffer3, index=False)
-    sample_csvs["Investment Portfolio"] = csv_buffer3.getvalue()
-
-    # Sample 4: Benefits / rewards
-    df4 = pd.DataFrame({
-        "Benefit": ["Airline Miles", "Cashback", "Gym Discount", "Streaming Service", "Hotel Points"],
-        "Provider": ["Chase Sapphire", "Amex Blue", "Local Gym", "Netflix", "Marriott"],
-        "Estimated_Savings_USD": [300, 50, 20, 15, 200],
-        "Frequency": ["Yearly", "Monthly", "Monthly", "Monthly", "Yearly"]
-    })
-    csv_buffer4 = io.StringIO()
-    df4.to_csv(csv_buffer4, index=False)
-    sample_csvs["Available Benefits"] = csv_buffer4.getvalue()
-
-    return sample_csvs
-
-sample_csvs = generate_sample_csvs()
+import pandas as pd
+import io
+import numpy as np
+from datetime import datetime, timedelta
+import streamlit as st
 
 # -------------------------------
-# Display download buttons
+# Function to generate one rich sample CSV per person
 # -------------------------------
-st.header("📥 Download Sample CSVs to Try Out")
+def generate_person_csv(name, age):
+    np.random.seed(hash(name) % 2**32)  # reproducibility per person
 
-for name, csv_data in sample_csvs.items():
+    # Personal info
+    personal_info = pd.DataFrame({
+        "Field": ["Name", "Age", "Monthly_Income", "Monthly_Expenses", "Primary_Bank", "Credit_Cards", "Memberships"],
+        "Value": [name, age, np.random.randint(4000,10000), np.random.randint(2000,8000),
+                  np.random.choice(["Chase", "Bank of America", "Wells Fargo", "Citi"]),
+                  ", ".join(np.random.choice(["Chase Sapphire", "Amex Blue", "Discover", "CapitalOne Venture"], size=2, replace=False)),
+                  ", ".join(np.random.choice(["Gym", "Airline Club", "Netflix", "Spotify", "Amazon Prime"], size=3, replace=False))
+                 ]
+    })
+
+    # Bank transactions (50+ entries)
+    start_date = datetime(2025,1,1)
+    transactions = pd.DataFrame({
+        "Date": [start_date + timedelta(days=i) for i in range(50)],
+        "Description": np.random.choice(["Grocery", "Restaurant", "Utilities", "Online Shopping", "Gas", "Subscription", "Rent", "Travel", "Coffee"], size=50),
+        "Amount": np.round(np.random.uniform(5,1500, size=50),2),
+        "Category": np.random.choice(["Food", "Bills", "Shopping", "Transport", "Housing", "Entertainment", "Travel"], size=50)
+    })
+
+    # Investment portfolio (10+ assets)
+    investments = pd.DataFrame({
+        "Investment_Type": np.random.choice(["Stock", "ETF", "Bond", "Crypto"], size=10),
+        "Ticker": [f"TICK{i}" for i in range(10)],
+        "Shares": np.round(np.random.uniform(1,100, size=10),2),
+        "Value_USD": np.round(np.random.uniform(100,5000, size=10),2),
+        "Annual_Return": np.round(np.random.uniform(2,15, size=10),2)
+    })
+
+    # Benefits / rewards (10+ entries)
+    benefits = pd.DataFrame({
+        "Benefit": np.random.choice(["Airline Miles", "Cashback", "Gym Discount", "Streaming Service", "Hotel Points", "Fuel Discount", "Retail Coupons"], size=10),
+        "Provider": np.random.choice(["Chase", "Amex", "Bank of America", "Netflix", "Marriott", "Shell", "Amazon"], size=10),
+        "Estimated_Savings_USD": np.round(np.random.uniform(10,500, size=10),2),
+        "Frequency": np.random.choice(["Monthly", "Yearly"], size=10)
+    })
+
+    # Combine into a single CSV-like string
+    csv_buffer = io.StringIO()
+    csv_buffer.write("# Personal Info\n")
+    personal_info.to_csv(csv_buffer, index=False)
+    csv_buffer.write("\n# Bank Transactions\n")
+    transactions.to_csv(csv_buffer, index=False)
+    csv_buffer.write("\n# Investment Portfolio\n")
+    investments.to_csv(csv_buffer, index=False)
+    csv_buffer.write("\n# Benefits / Rewards\n")
+    benefits.to_csv(csv_buffer, index=False)
+
+    return csv_buffer.getvalue()
+
+# -------------------------------
+# Generate 3 sample CSVs
+# -------------------------------
+sample_csvs = {
+    "Alice Johnson": generate_person_csv("Alice Johnson", 30),
+    "Bob Smith": generate_person_csv("Bob Smith", 42),
+    "Carol Lee": generate_person_csv("Carol Lee", 28)
+}
+
+# -------------------------------
+# Streamlit UI: download buttons
+# -------------------------------
+st.header("📥 Download Sample Financial Profiles")
+for person, csv_data in sample_csvs.items():
     st.download_button(
-        label=f"Download '{name}'",
+        label=f"Download sample CSV for {person}",
         data=csv_data.encode("utf-8"),
-        file_name=f"{name.replace(' ','_').lower()}.csv",
+        file_name=f"{person.replace(' ','_').lower()}_profile.csv",
         mime="text/csv"
     )
 # -------------------------------
