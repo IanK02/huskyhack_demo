@@ -9,55 +9,78 @@ from google import genai
 # -------------------------------
 st.set_page_config(page_title="Financial AI Advisor", layout="centered")
 
-# Hide default Streamlit UI and set background image
-st.markdown("""
-<style>
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-header {visibility: hidden;}
+# -------------------------------
+# Sample CSV generation
+# -------------------------------
 
-/* Make container scrollable */
-.block-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* change from center */
-    text-align: center;
-    padding-top: 40px;
-}
+def generate_sample_csvs():
+    sample_csvs = {}
 
-/* Background image */
-body {
-    background-image: url('background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+    # Sample 1: Basic financial profile
+    df1 = pd.DataFrame({
+        "Name": ["Alice"],
+        "Age": [30],
+        "Monthly_Income": [5000],
+        "Monthly_Expenses": [3200],
+        "Credit_Card_Reward": ["2% cashback"],
+        "Bank_Accounts": ["Bank of America, Chase"],
+        "Investments": ["Vanguard ETF, Robinhood Stocks"],
+        "Membership_Benefits": ["Gym membership discount, Airline miles"]
+    })
+    csv_buffer1 = io.StringIO()
+    df1.to_csv(csv_buffer1, index=False)
+    sample_csvs["Basic Financial Profile"] = csv_buffer1.getvalue()
 
-/* Recommendation boxes */
-.recommendation-box {
-    background-color: rgba(255,255,255,0.9);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 15px;
-    text-align: left;
-    width: 90%;
-    max-width: 700px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-.recommendation-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: #1f2937;
-    margin-bottom: 5px;
-}
-.recommendation-desc {
-    font-size: 15px;
-    color: #374151;
-}
-</style>
-""", unsafe_allow_html=True)
+    # Sample 2: More transactions
+    df2 = pd.DataFrame({
+        "Date": pd.date_range(start="2025-01-01", periods=10, freq='D'),
+        "Description": ["Grocery", "Restaurant", "Utilities", "Online Shopping", "Coffee", "Gas", "Subscription", "Rent", "Gym", "Travel"],
+        "Amount": [120, 45, 150, 200, 5, 60, 15, 1200, 40, 500],
+        "Category": ["Food","Food","Bills","Shopping","Food","Transport","Subscription","Housing","Health","Travel"]
+    })
+    csv_buffer2 = io.StringIO()
+    df2.to_csv(csv_buffer2, index=False)
+    sample_csvs["Recent Transactions"] = csv_buffer2.getvalue()
 
+    # Sample 3: Investment portfolio
+    df3 = pd.DataFrame({
+        "Investment_Type": ["Stocks", "ETF", "Bonds", "Crypto"],
+        "Ticker": ["AAPL", "VOO", "US10Y", "BTC"],
+        "Shares": [10, 20, 5, 0.1],
+        "Value_USD": [1500, 6000, 500, 3000],
+        "Annual_Return": ["8%", "7%", "3%", "12%"]
+    })
+    csv_buffer3 = io.StringIO()
+    df3.to_csv(csv_buffer3, index=False)
+    sample_csvs["Investment Portfolio"] = csv_buffer3.getvalue()
+
+    # Sample 4: Benefits / rewards
+    df4 = pd.DataFrame({
+        "Benefit": ["Airline Miles", "Cashback", "Gym Discount", "Streaming Service", "Hotel Points"],
+        "Provider": ["Chase Sapphire", "Amex Blue", "Local Gym", "Netflix", "Marriott"],
+        "Estimated_Savings_USD": [300, 50, 20, 15, 200],
+        "Frequency": ["Yearly", "Monthly", "Monthly", "Monthly", "Yearly"]
+    })
+    csv_buffer4 = io.StringIO()
+    df4.to_csv(csv_buffer4, index=False)
+    sample_csvs["Available Benefits"] = csv_buffer4.getvalue()
+
+    return sample_csvs
+
+sample_csvs = generate_sample_csvs()
+
+# -------------------------------
+# Display download buttons
+# -------------------------------
+st.header("📥 Download Sample CSVs to Try Out")
+
+for name, csv_data in sample_csvs.items():
+    st.download_button(
+        label=f"Download '{name}'",
+        data=csv_data.encode("utf-8"),
+        file_name=f"{name.replace(' ','_').lower()}.csv",
+        mime="text/csv"
+    )
 # -------------------------------
 # Gemini client setup
 # -------------------------------
