@@ -1,0 +1,16 @@
+Section,Field1,Field2,Field3,Field4
+Personal_Info,Name,Bob Smith,,
+Personal_Info,Age,42,,
+Personal_Info,Occupation,Designer,,
+Personal_Info,City,San Francisco,,
+Transactions,2025-01-01,Grocery,60,Food
+Transactions,2025-01-03,Uber,15.5,Transport
+Transactions,2025-01-04,Netflix,15,Entertainment
+Transactions,2025-01-08,Rent,2500,Housing
+Transactions,2025-01-09,Electric Bill,120,Utilities
+Investments,Stock,TSLA,5,2000
+Investments,ETF,VOO,8,2200
+Investments,Crypto,ETH,0.1,1600
+Benefits,Cashback,Citi Double Cash,6,Monthly
+Benefits,Travel Discount,American Airlines,50,One-time
+Benefits,Streaming Free Trial,Hulu,0,Trial

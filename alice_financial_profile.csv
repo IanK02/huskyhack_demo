@@ -1,0 +1,16 @@
+Section,Field1,Field2,Field3,Field4
+Personal_Info,Name,Alice Johnson,,
+Personal_Info,Age,30,,
+Personal_Info,Occupation,Engineer,,
+Personal_Info,City,Seattle,,
+Transactions,2025-01-01,Grocery,45.67,Food
+Transactions,2025-01-02,Starbucks,7.5,Food
+Transactions,2025-01-05,Amazon,120.25,Shopping
+Transactions,2025-01-10,Rent,2000,Housing
+Transactions,2025-01-11,Electric Bill,80,Utilities
+Investments,Stock,AAPL,10,1500
+Investments,ETF,VTI,5,1200
+Investments,Crypto,BTC,0.02,700
+Benefits,Airline Miles,Chase Sapphire,300,Yearly
+Benefits,Cashback,Discover,5,Monthly
+Benefits,Gym Membership,Planet Fitness,0,Free
