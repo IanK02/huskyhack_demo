@@ -1,0 +1,220 @@
+# Personal Info
+Field,Value
+Name,Bob Smith
+Age,42
+Monthly_Income,7681
+Monthly_Expenses,3717
+Primary_Bank,Bank of America
+Credit_Cards,"Discover, Amex Blue, Citi Double Cash"
+Loans,"Car Loan, Student Loan"
+Memberships,"Spotify, Amazon Prime, Gym, Costco"
+Insurance_Policies,"Life, Health"
+
+# Bank Transactions
+Date,Description,Amount,Category
+2025-01-01,Grocery,940.45,Shopping
+2025-01-02,Restaurant,1802.95,Health
+2025-01-03,Medical,829.33,Housing
+2025-01-04,Subscription,673.88,Health
+2025-01-05,Gym,186.81,Health
+2025-01-06,Insurance,1334.85,Shopping
+2025-01-07,Gas,1058.51,Transport
+2025-01-08,Coffee,7.24,Shopping
+2025-01-09,Medical,758.09,Bills
+2025-01-10,Travel,1633.88,Insurance
+2025-01-11,Grocery,1344.17,Food
+2025-01-12,Subscription,1695.55,Housing
+2025-01-13,Gas,1149.13,Travel
+2025-01-14,Travel,1915.11,Travel
+2025-01-15,Insurance,1803.73,Shopping
+2025-01-16,Travel,497.32,Transport
+2025-01-17,Gas,1894.69,Transport
+2025-01-18,Gym,1377.35,Housing
+2025-01-19,Medical,1642.65,Insurance
+2025-01-20,Medical,1917.56,Health
+2025-01-21,Online Shopping,1687.35,Housing
+2025-01-22,Electronics,1218.59,Transport
+2025-01-23,Medical,56.0,Health
+2025-01-24,Gas,1158.08,Travel
+2025-01-25,Grocery,1739.25,Food
+2025-01-26,Coffee,1122.17,Insurance
+2025-01-27,Insurance,533.87,Bills
+2025-01-28,Gas,359.92,Health
+2025-01-29,Travel,562.97,Transport
+2025-01-30,Subscription,1683.32,Housing
+2025-01-31,Rent,474.71,Health
+2025-02-01,Coffee,1190.82,Shopping
+2025-02-02,Gas,1437.08,Travel
+2025-02-03,Gym,777.78,Health
+2025-02-04,Subscription,582.29,Transport
+2025-02-05,Gas,738.76,Subscriptions
+2025-02-06,Insurance,309.94,Housing
+2025-02-07,Medical,1857.25,Food
+2025-02-08,Online Shopping,588.34,Subscriptions
+2025-02-09,Gym,568.26,Travel
+2025-02-10,Online Shopping,1871.08,Transport
+2025-02-11,Gym,1552.76,Housing
+2025-02-12,Restaurant,327.24,Subscriptions
+2025-02-13,Medical,1836.37,Subscriptions
+2025-02-14,Travel,1899.33,Bills
+2025-02-15,Utilities,1649.6,Travel
+2025-02-16,Restaurant,510.45,Travel
+2025-02-17,Grocery,1344.97,Shopping
+2025-02-18,Gas,242.99,Travel
+2025-02-19,Rent,759.73,Bills
+2025-02-20,Travel,1648.29,Entertainment
+2025-02-21,Rent,64.49,Bills
+2025-02-22,Subscription,1791.06,Health
+2025-02-23,Coffee,126.17,Housing
+2025-02-24,Rent,1196.49,Travel
+2025-02-25,Subscription,278.62,Subscriptions
+2025-02-26,Gym,1258.75,Health
+2025-02-27,Gym,1600.71,Subscriptions
+2025-02-28,Utilities,81.71,Housing
+2025-03-01,Grocery,1670.13,Transport
+2025-03-02,Medical,1366.09,Transport
+2025-03-03,Grocery,1288.81,Bills
+2025-03-04,Utilities,1312.54,Food
+2025-03-05,Insurance,40.25,Subscriptions
+2025-03-06,Electronics,346.2,Entertainment
+2025-03-07,Grocery,776.61,Bills
+2025-03-08,Rent,1810.55,Health
+2025-03-09,Medical,1455.31,Housing
+2025-03-10,Medical,478.41,Transport
+2025-03-11,Online Shopping,933.07,Subscriptions
+2025-03-12,Subscription,29.9,Entertainment
+2025-03-13,Coffee,1026.88,Food
+2025-03-14,Electronics,221.81,Housing
+2025-03-15,Online Shopping,1499.97,Bills
+2025-03-16,Electronics,888.75,Bills
+2025-03-17,Online Shopping,1220.82,Housing
+2025-03-18,Insurance,429.47,Entertainment
+2025-03-19,Rent,122.27,Entertainment
+2025-03-20,Coffee,1967.71,Health
+2025-03-21,Online Shopping,1935.72,Insurance
+2025-03-22,Grocery,137.67,Bills
+2025-03-23,Utilities,1613.53,Housing
+2025-03-24,Rent,1938.21,Travel
+2025-03-25,Travel,222.94,Shopping
+2025-03-26,Travel,435.69,Entertainment
+2025-03-27,Coffee,1972.19,Travel
+2025-03-28,Insurance,531.85,Transport
+2025-03-29,Grocery,1577.1,Health
+2025-03-30,Utilities,1432.49,Subscriptions
+2025-03-31,Restaurant,1372.91,Subscriptions
+2025-04-01,Restaurant,1687.35,Insurance
+2025-04-02,Grocery,39.87,Health
+2025-04-03,Utilities,514.32,Health
+2025-04-04,Restaurant,319.72,Food
+2025-04-05,Gym,1427.56,Shopping
+2025-04-06,Electronics,163.95,Health
+2025-04-07,Gas,550.52,Transport
+2025-04-08,Insurance,1457.87,Shopping
+2025-04-09,Travel,89.09,Subscriptions
+2025-04-10,Electronics,925.43,Food
+2025-04-11,Medical,1050.51,Food
+2025-04-12,Online Shopping,418.13,Transport
+2025-04-13,Rent,1015.41,Bills
+2025-04-14,Gym,1908.26,Entertainment
+2025-04-15,Travel,1911.77,Housing
+2025-04-16,Coffee,803.22,Entertainment
+2025-04-17,Rent,988.61,Food
+2025-04-18,Medical,714.88,Bills
+2025-04-19,Online Shopping,1049.14,Travel
+2025-04-20,Grocery,278.74,Food
+2025-04-21,Grocery,157.17,Subscriptions
+2025-04-22,Electronics,1362.9,Health
+2025-04-23,Medical,82.05,Food
+2025-04-24,Electronics,694.09,Entertainment
+2025-04-25,Gym,251.48,Entertainment
+2025-04-26,Utilities,1771.44,Health
+2025-04-27,Travel,1857.82,Housing
+2025-04-28,Coffee,1864.65,Food
+2025-04-29,Coffee,882.33,Food
+2025-04-30,Restaurant,1709.52,Travel
+2025-05-01,Insurance,1128.59,Health
+2025-05-02,Medical,94.77,Housing
+2025-05-03,Insurance,1220.81,Insurance
+2025-05-04,Gym,1358.51,Entertainment
+2025-05-05,Electronics,1070.91,Travel
+2025-05-06,Restaurant,459.66,Health
+2025-05-07,Gas,1916.85,Transport
+2025-05-08,Electronics,930.48,Transport
+2025-05-09,Electronics,257.56,Bills
+2025-05-10,Subscription,277.45,Insurance
+2025-05-11,Grocery,1043.85,Bills
+2025-05-12,Restaurant,1156.35,Travel
+2025-05-13,Grocery,1002.1,Subscriptions
+2025-05-14,Insurance,611.61,Food
+2025-05-15,Online Shopping,538.4,Entertainment
+2025-05-16,Gas,1454.75,Subscriptions
+2025-05-17,Electronics,974.2,Transport
+2025-05-18,Insurance,1890.65,Insurance
+2025-05-19,Rent,1335.86,Transport
+2025-05-20,Electronics,220.21,Entertainment
+2025-05-21,Insurance,909.24,Shopping
+2025-05-22,Grocery,1975.4,Bills
+2025-05-23,Coffee,469.22,Food
+2025-05-24,Insurance,77.56,Food
+2025-05-25,Rent,1290.16,Entertainment
+2025-05-26,Medical,1660.45,Shopping
+2025-05-27,Gas,1285.99,Health
+2025-05-28,Utilities,362.82,Bills
+2025-05-29,Rent,603.05,Housing
+2025-05-30,Gas,536.89,Food
+
+# Investment Portfolio
+Investment_Type,Ticker,Shares,Value_USD,Annual_Return
+Stock,TICK0,146.31,3057.58,6.7
+ETF,TICK1,1.94,1716.94,3.88
+REIT,TICK2,67.09,5444.05,18.2
+Stock,TICK3,63.02,6535.04,15.9
+Crypto,TICK4,112.38,6054.39,13.28
+REIT,TICK5,14.93,4225.3,8.43
+Stock,TICK6,76.82,7661.62,15.87
+Mutual Fund,TICK7,193.04,7487.21,16.01
+REIT,TICK8,98.03,6421.67,17.18
+ETF,TICK9,196.22,2968.48,19.04
+Crypto,TICK10,42.48,4589.1,15.82
+REIT,TICK11,89.07,2726.37,8.32
+Bond,TICK12,96.45,5772.12,4.19
+Bond,TICK13,82.84,6019.43,18.02
+Crypto,TICK14,141.17,3835.98,16.56
+Mutual Fund,TICK15,155.64,8334.34,12.66
+Crypto,TICK16,177.86,3916.21,10.81
+Crypto,TICK17,20.91,5235.57,17.79
+Bond,TICK18,153.44,802.33,13.55
+ETF,TICK19,199.17,791.45,13.4
+Bond,TICK20,188.89,3567.75,18.41
+REIT,TICK21,180.63,1542.76,13.1
+ETF,TICK22,149.61,4250.76,19.95
+REIT,TICK23,48.06,3647.02,17.35
+REIT,TICK24,54.72,4473.19,11.93
+REIT,TICK25,172.3,3011.98,14.22
+Stock,TICK26,34.79,1046.35,14.47
+Mutual Fund,TICK27,160.73,5744.28,18.78
+ETF,TICK28,184.65,9050.19,10.22
+Crypto,TICK29,66.55,6473.57,4.92
+
+# Benefits / Rewards
+Benefit,Provider,Estimated_Savings_USD,Frequency
+Airline Miles,Bank of America,320.52,Yearly
+Travel Vouchers,Netflix,419.89,Monthly
+Airline Miles,Bank of America,231.34,Monthly
+Cashback,Bank of America,193.64,Yearly
+Membership Perks,Amex,301.53,Monthly
+Airline Miles,Amex,446.94,Yearly
+Dining Discounts,Netflix,54.98,Monthly
+Membership Perks,Marriott,22.34,Monthly
+Retail Coupons,Amex,86.82,Monthly
+Cashback,Marriott,283.03,Monthly
+Gym Discount,Shell,54.14,Monthly
+Gym Discount,Marriott,428.42,Monthly
+Fuel Discount,Amex,174.38,Yearly
+Cashback,Bank of America,406.39,Monthly
+Airline Miles,Amazon,89.41,Yearly
+Airline Miles,Amazon,180.51,Monthly
+Retail Coupons,Netflix,165.4,Yearly
+Cashback,Marriott,438.36,Monthly
+Gym Discount,Amex,157.39,Yearly
+Travel Vouchers,Netflix,282.12,Yearly

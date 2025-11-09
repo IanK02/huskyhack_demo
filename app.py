@@ -18,9 +18,9 @@ st.header("📥 Download Sample Financial Profiles")
 # Map of people to file paths (these CSV files should already exist in your project folder)
 
 sample_files = {
-    "Alice Johnson": "alice_financial_profile.csv",
-    "Bob Smith": "bob_financial_profile.csv",
-    "Carol Lee": "carol_financial_profile.csv"
+    "Alice Johnson": "sample_csvs/alice_johnson_profile.csv",
+    "Bob Smith": "sample_csvs/bob_smith_profile.csv",
+    "Carol Lee": "sample_csvs/carol_lee_profile.csv"
 }
 
 for person, file_path in sample_files.items():
